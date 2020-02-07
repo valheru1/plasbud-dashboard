@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\AssignmentController;
+
+Route::get('/', function() {
+
+    return view('welcome',[
+        'plevents' => App\PlEvent::take(15)->get()
+    ]);
 });
 
-Route::get('/dashboard', function() {
-
+Route::get('/calendar', function () {
+    return view('calendar');
 });
+
+Route::get('/assignments', 'AssignmentController@index');
+
+Route::get('/assignments/{id}', 'AssignmentController@show');
