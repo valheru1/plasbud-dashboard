@@ -13,9 +13,9 @@
 
 use App\Http\Controllers\AssignmentController;
 
-Route::get('/', function() {
+Route::get('/', function () {
 
-    return view('welcome',[
+    return view('welcome', [
         'plevents' => App\PlEvent::take(15)->get()
     ]);
 });
@@ -25,5 +25,9 @@ Route::get('/calendar', function () {
 });
 
 Route::get('/assignments', 'AssignmentController@index');
-
+Route::get('/assignments/create', 'AssignmentController@create');
 Route::get('/assignments/{id}', 'AssignmentController@show');
+
+Route::get('/clients', 'ClientController@index');
+Route::get('/clients/create', 'ClientController@create');
+Route::post('/clients', 'ClientController@store');

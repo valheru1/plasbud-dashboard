@@ -9,7 +9,6 @@ class AssignmentController extends Controller
 {
     public function index()
     {
-
     }
 
     public function show($id)
@@ -17,5 +16,10 @@ class AssignmentController extends Controller
         $assignment = Assignment::find($id);
 
         return view('assignments.show', ['assignment' => $assignment]);
+    }
+
+    public function create()
+    {
+        return view('assignments.create');
     }
 }
