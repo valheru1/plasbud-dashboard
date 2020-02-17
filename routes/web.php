@@ -29,5 +29,8 @@ Route::get('/assignments/create', 'AssignmentController@create');
 Route::get('/assignments/{id}', 'AssignmentController@show');
 
 Route::get('/clients', 'ClientController@index');
-Route::get('/clients/create', 'ClientController@create');
 Route::post('/clients', 'ClientController@store');
+Route::get('/clients/create', 'ClientController@create');
+Route::get('/clients/{client}', 'ClientController@show');
+Route::get('/clients/{client}/edit', 'ClientController@edit');
+Route::put('/clients/{client}', 'ClientController@update');

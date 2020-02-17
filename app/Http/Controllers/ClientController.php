@@ -15,7 +15,9 @@ class ClientController extends Controller
 
     public function show($id)
     {
-        # code...
+        $client = Client::find($id);
+
+        return view('clients.show', compact('client'));
     }
 
     public function create()
@@ -27,6 +29,7 @@ class ClientController extends Controller
     {
         $client = new Client();
 
+
         $client->surname = request('surname');
         $client->name = request('name');
         $client->phone = request('phone');
@@ -35,10 +38,35 @@ class ClientController extends Controller
         $client->city_code = request('city_code');
         $client->city = request('city');
         $client->country = request('country');
-        $client->description = request('decription');
+        $client->description = request('description');
 
         $client->save();
 
         return redirect('/clients');
+    }
+
+    public function edit($id)
+    {
+        $client = Client::find($id);
+        return view('clients.edit', compact('client'));
+    }
+
+    public function update($id)
+    {
+        $client = Client::find($id);
+
+        $client->surname = request('surname');
+        $client->name = request('name');
+        $client->phone = request('phone');
+        $client->street = request('street');
+        $client->home_number = request('home_number');
+        $client->city_code = request('city_code');
+        $client->city = request('city');
+        $client->country = request('country');
+        $client->description = request('description');
+
+        $client->save();
+
+        return redirect('/clients/' . $client->id);
     }
 }
