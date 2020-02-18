@@ -9,7 +9,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::orderby('surname')->get();
+        $clients = Client::orderby('surname')->paginate(20);
         return view('clients.index', ['clients' => $clients]);
     }
 
@@ -27,6 +27,12 @@ class ClientController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'surname' => 'required',
+            'name' => 'required',
+            'phone' => 'required'
+        ]);
+
         $client = new Client();
 
 

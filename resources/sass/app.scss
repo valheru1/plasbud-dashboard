@@ -1,1 +1,11 @@
 @import 'tailwind';
+
+
+.page-item {
+    display: inline;
+}
+
+.is-danger {
+    color: red;
+    font-size: 0.9rem;
+}

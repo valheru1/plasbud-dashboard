@@ -1,9 +1,17 @@
 @extends('layout')
 
+@section('errors')
+    <p>{{ $errors->first('surname') ? 'Brak nazwiska klienta!' : '' }}</p>
+    <p>{{ $errors->first('name') ? 'Brak imienia klienta!' : '' }}</p>
+    <p>{{ $errors->first('phone') ? 'Brak numeru telefonu klienta' : '' }}</p>
+@endsection
+
 @section('content')
     <div id="wrapper">
+
         <div id="page" class="container mx-auto w-full max-w-4xl">
             <h1 class="font-bold">Podaj dane nowego klienta:</h1>
+
             <form class="w-full max-w-lg mx-auto" method="POST" action="/clients">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -11,19 +19,22 @@
                         <label class="block text-gray-700 text-lg font-medium mb-2" for="surname">
                             Nazwisko
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" name="surname" type="text" placeholder="Nazwisko:">
+                        <input class="shadow appearance-none border {{ $errors->first('surname') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" name="surname" type="text" placeholder="Nazwisko:">
+
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block text-gray-700 text-lg font-medium mb-2" for="name">
                             Imię:
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Imię:"></input>
+                        <input class="shadow appearance-none border {{ $errors->first('name') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Imię:"></input>
+
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block text-gray-700 text-lg font-medium mb-2" for="phone">
                             Telefon:
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="text" placeholder="Numer telefonu:"></input>
+                        <input class="shadow appearance-none border {{ $errors->first('phone') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="text" placeholder="Numer telefonu:"></input>
+
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">

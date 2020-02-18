@@ -14040,6 +14040,15 @@ video {
           transition-duration: 1000ms;
 }
 
+.page-item {
+  display: inline;
+}
+
+.is-danger {
+  color: red;
+  font-size: 0.9rem;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

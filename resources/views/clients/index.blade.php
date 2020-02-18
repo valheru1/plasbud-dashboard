@@ -41,6 +41,7 @@
                         </td>
                     </tr>
                     @endforeach
+
                     {{-- <tr>
                     <td class="border px-4 py-2">Intro to CSS</td>
                     <td class="border px-4 py-2">Adam</td>
@@ -58,6 +59,7 @@
                     </tr> --}}
                 </tbody>
             </table>
+            {{ $clients->links() }}
         </div>
     </div>
 @endsection
