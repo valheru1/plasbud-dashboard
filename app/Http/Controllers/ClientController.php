@@ -30,7 +30,12 @@ class ClientController extends Controller
         request()->validate([
             'surname' => 'required',
             'name' => 'required',
-            'phone' => 'required'
+            'phone' => 'required|numeric'
+        ],[
+            'surname.required' => 'Nie podano nazwiska!',
+            'name.required' => 'Nie podano imienia!',
+            'phone.required' => 'Nie podano numeru telefonu!',
+            'phone.numeric' => 'Numer telefonu może składać się z samych cyfr!',
         ]);
 
         $client = new Client();
@@ -59,6 +64,17 @@ class ClientController extends Controller
 
     public function update($id)
     {
+        request()->validate([
+            'surname' => 'required',
+            'name' => 'required',
+            'phone' => 'required|numeric'
+        ],[
+            'surname.required' => 'Nie podano nazwiska!',
+            'name.required' => 'Nie podano imienia!',
+            'phone.required' => 'Nie podano numeru telefonu!',
+            'phone.numeric' => 'Numer telefonu może składać się z samych cyfr!',
+        ]);
+
         $client = Client::find($id);
 
         $client->surname = request('surname');
@@ -75,4 +91,13 @@ class ClientController extends Controller
 
         return redirect('/clients/' . $client->id);
     }
+
+
+    public function messages()
+{
+    return [
+        'phone.numeric' => 'Numer telefonu może składać się z samych cyfr',
+        
+    ];
+}
 }
