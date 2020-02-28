@@ -1,9 +1,20 @@
 @extends('layout')
 
+@section('errors')
+    <p>{{ $errors->first('surname') }}</p>
+    <p>{{ $errors->first('name') }}</p>
+    <p>{{ $errors->first('street') }}</p>
+    <p>{{ $errors->first('home_number') }}</p>
+    <p>{{ $errors->first('city_code') }}</p>
+    <p>{{ $errors->first('city') }}</p>
+    <p>{{ $errors->first('country') }}</p>
+    <p>{{ $errors->first('description') }}</p>
+@endsection
+
 @section('content')
     <div id="wrapper">
         <div id="page" class="container mx-auto w-full max-w-4xl">
-            <h1 class="font-bold">Podaj dane nowego klienta:</h1>
+            <h1 class="font-bold">Dane klienta:</h1>
             <form class="w-full max-w-lg mx-auto" method="POST" action="/clients/{{ $client->id }}">
                 @csrf
                 @method('PUT')
@@ -63,15 +74,15 @@
                 </div>
 
                 <div class="mb-4">
-                <label class="block text-gray-700 text-lg font-medium mb-2" for="description">
-                    Notatka:
-                </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" type="text" placeholder="Notatka:" value="{{ $client->description }}"></textarea>
+                    <label class="block text-gray-700 text-lg font-medium mb-2" for="description">
+                        Notatka:
+                    </label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" type="text" placeholder="Notatka:" value="{{ $client->description }}"></textarea>
                 </div>
                 <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Dodaj nowego klienta
-                </button>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Zmień dane klienta
+                    </button>
                 </div>
             </form>
 

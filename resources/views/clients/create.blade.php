@@ -3,7 +3,13 @@
 @section('errors')
     <p>{{ $errors->first('surname') }}</p>
     <p>{{ $errors->first('name') }}</p>
+    <p>{{ $errors->first('street') }}</p>
+    <p>{{ $errors->first('home_number') }}</p>
     <p>{{ $errors->first('phone') }}</p>
+    <p>{{ $errors->first('city_code') }}</p>
+    <p>{{ $errors->first('city') }}</p>
+    <p>{{ $errors->first('country') }}</p>
+    <p>{{ $errors->first('description') }}</p>
 @endsection
 
 @section('content')

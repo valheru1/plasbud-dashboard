@@ -13,9 +13,9 @@ class ClientController extends Controller
         return view('clients.index', ['clients' => $clients]);
     }
 
-    public function show($id)
+    public function show(Client $client)
     {
-        $client = Client::find($id);
+        // $client = Client::findOrFail($id);
 
         return view('clients.show', compact('client'));
     }
@@ -30,52 +30,68 @@ class ClientController extends Controller
         request()->validate([
             'surname' => 'required',
             'name' => 'required',
-            'phone' => 'required|numeric'
-        ],[
+            'phone' => 'required|numeric',
+            'home_number' => 'max:10',
+            'description' => 'max:200',
+        ], [
             'surname.required' => 'Nie podano nazwiska!',
             'name.required' => 'Nie podano imienia!',
             'phone.required' => 'Nie podano numeru telefonu!',
             'phone.numeric' => 'Numer telefonu może składać się z samych cyfr!',
+            'description' => 'Za dużo znaków! Opis możesz zbudować tylko z 200 znaków.',
         ]);
 
-        $client = new Client();
+        Client::create([
+            'surname' => request('surname'),
+            'name' => request('name'),
+            'phone' => request('phone'),
+            'street' => request('street'),
+            'home_number' => request('home_number'),
+            'city_code' => request('city_code'),
+            'city' => request('city'),
+            'country' => request('country'),
+            'description' => request('description')
+        ]);
+
+        // $client = new Client();
 
 
-        $client->surname = request('surname');
-        $client->name = request('name');
-        $client->phone = request('phone');
-        $client->street = request('street');
-        $client->home_number = request('home_number');
-        $client->city_code = request('city_code');
-        $client->city = request('city');
-        $client->country = request('country');
-        $client->description = request('description');
+        // $client->surname = request('surname');
+        // $client->name = request('name');
+        // $client->phone = request('phone');
+        // $client->home_number = request('home_number');
+        // $client->description = request('description');
 
-        $client->save();
+        // $client->save();
 
         return redirect('/clients');
     }
 
-    public function edit($id)
+    public function edit(Client $client)
     {
-        $client = Client::find($id);
+        //$client = Client::findOrFail($id);
         return view('clients.edit', compact('client'));
     }
 
-    public function update($id)
+    public function update(Client $client)
     {
         request()->validate([
             'surname' => 'required',
             'name' => 'required',
-            'phone' => 'required|numeric'
-        ],[
+            'phone' => 'required|numeric',
+            'home_number' => 'max:10',
+            'description' => 'max:200',
+        ], [
             'surname.required' => 'Nie podano nazwiska!',
             'name.required' => 'Nie podano imienia!',
             'phone.required' => 'Nie podano numeru telefonu!',
             'phone.numeric' => 'Numer telefonu może składać się z samych cyfr!',
+            'description' => 'Za dużo znaków! Opis możesz zbudować tylko z 200 znaków.',
         ]);
 
-        $client = Client::find($id);
+        //die(request());
+
+        //$client = Client::findOrFail($id);
 
         $client->surname = request('surname');
         $client->name = request('name');
@@ -91,13 +107,4 @@ class ClientController extends Controller
 
         return redirect('/clients/' . $client->id);
     }
-
-
-    public function messages()
-{
-    return [
-        'phone.numeric' => 'Numer telefonu może składać się z samych cyfr',
-        
-    ];
-}
 }
