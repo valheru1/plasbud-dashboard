@@ -36,8 +36,11 @@
                         <td>{{ $client->country }}</td>
                         <td>
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                            <a href="/clients/{{ $client->id }}/edit">Zmień</a>
+                                <a href="/clients/{{ $client->id }}/edit">Zmień</a>
                             </button>
+                            {{-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                <a href="/clients/{{ $client->id }}">Wyświetl</a>
+                            </button> --}}
                         </td>
                     </tr>
                     @endforeach

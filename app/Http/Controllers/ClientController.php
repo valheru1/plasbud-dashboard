@@ -27,7 +27,7 @@ class ClientController extends Controller
 
     public function store()
     {
-        request()->validate([
+        $validatedAttributes = request()->validate([
             'surname' => 'required',
             'name' => 'required',
             'phone' => 'required|numeric',
@@ -41,17 +41,7 @@ class ClientController extends Controller
             'description' => 'Za dużo znaków! Opis możesz zbudować tylko z 200 znaków.',
         ]);
 
-        Client::create([
-            'surname' => request('surname'),
-            'name' => request('name'),
-            'phone' => request('phone'),
-            'street' => request('street'),
-            'home_number' => request('home_number'),
-            'city_code' => request('city_code'),
-            'city' => request('city'),
-            'country' => request('country'),
-            'description' => request('description')
-        ]);
+        Client::create($validatedAttributes);
 
         // $client = new Client();
 
@@ -75,11 +65,15 @@ class ClientController extends Controller
 
     public function update(Client $client)
     {
-        request()->validate([
+        $validatedAttributes = request()->validate([
             'surname' => 'required',
             'name' => 'required',
             'phone' => 'required|numeric',
+            'street' => '',
             'home_number' => 'max:10',
+            'city_code' => '',
+            'city' => '',
+            'country' => '',
             'description' => 'max:200',
         ], [
             'surname.required' => 'Nie podano nazwiska!',
@@ -89,21 +83,22 @@ class ClientController extends Controller
             'description' => 'Za dużo znaków! Opis możesz zbudować tylko z 200 znaków.',
         ]);
 
+        $client->update($validatedAttributes);
         //die(request());
 
         //$client = Client::findOrFail($id);
 
-        $client->surname = request('surname');
-        $client->name = request('name');
-        $client->phone = request('phone');
-        $client->street = request('street');
-        $client->home_number = request('home_number');
-        $client->city_code = request('city_code');
-        $client->city = request('city');
-        $client->country = request('country');
-        $client->description = request('description');
+        // $client->surname = request('surname');
+        // $client->name = request('name');
+        // $client->phone = request('phone');
+        // $client->street = request('street');
+        // $client->home_number = request('home_number');
+        // $client->city_code = request('city_code');
+        // $client->city = request('city');
+        // $client->country = request('country');
+        // $client->description = request('description');
 
-        $client->save();
+        // $client->save();
 
         return redirect('/clients/' . $client->id);
     }
