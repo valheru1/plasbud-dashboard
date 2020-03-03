@@ -21,6 +21,7 @@
                         <th class="w-1/4 px-4 py-2">Miasto</th>
                         <th class="w-1/4 px-4 py-2">Kraj</th>
                         <th class="w-1/4 px-4 py-2"></th>
+                        <th class="w-1/4 px-4 py-2"></th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -35,12 +36,16 @@
                         <td>{{ $client->city }}</td>
                         <td>{{ $client->country }}</td>
                         <td>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                                <a href="/clients/{{ $client->id }}/edit">Zmień</a>
-                            </button>
+                            {{-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"> --}}
+                                <a href="/clients/{{ $client->id }}/edit"><i class="fas fa-user-edit"></i></a>
+
+                            {{-- </button> --}}
                             {{-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                                 <a href="/clients/{{ $client->id }}">Wyświetl</a>
                             </button> --}}
+                        </td>
+                        <td>
+                            <a href="/clients/{{ $client->id }}"><i class="fas fa-eye"></i></a>
                         </td>
                     </tr>
                     @endforeach
