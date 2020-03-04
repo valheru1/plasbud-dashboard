@@ -45,7 +45,7 @@
                             </button> --}}
                         </td>
                         <td>
-                            <a href="/clients/{{ $client->id }}"><i class="fas fa-eye"></i></a>
+                            <a href="{{ $client->path()}}"><i class="fas fa-eye"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -51,7 +51,7 @@ Released   : 20140225
                     <a href="/assignments" title="" class="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-white {{ Request::path() === 'assignments' ? 'text-white' : ''}}">Zadania</a>
                     <a href="#" title="" class="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-white {{ Request::path() === 'registry' ? 'text-white' : ''}}">Rejestr zleceń</a>
                     <a href="/calendar" title="" class="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-white {{ Request::path() === 'calendar' ? 'text-white' : ''}}">Kalendarz</a>
-                    <a href="/clients" title="" class="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-white {{ Request::path() === 'clients' ? 'text-white' : ''}}">Klienci</a>
+                    <a href="{{ route('clients.index') }}" title="" class="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-white  Request::path() === 'clients' ? 'text-white' : '' }}">Klienci</a>
                 </div>
                 <div>
                     <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>

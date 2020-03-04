@@ -81,7 +81,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        Zmień dane klienta
+                        <i class="far fa-check-square"></i> Zatwierdź
                     </button>
                 </div>
             </form>
